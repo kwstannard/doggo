@@ -26,6 +26,23 @@ RSpec.feature 'as a manager' do
         { 'Name'=>'Rex', 'Weekly Schedule'=>'Mon,Tue,Wed,Thu,Fri' },
         { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon' }
       ])
+
+      ### Edit Dog
+
+      click_on 'Dogs'
+
+      click_on 'Rex'
+
+      fill_in 'Name', with: 'Rexy'
+      uncheck 'Wednesday'
+      uncheck 'Thursday'
+      uncheck 'Friday'
+      click_on 'Save'
+
+      expect(table_hash).to eq([
+        { 'Name'=>'Rexy', 'Weekly Schedule'=>'Mon,Tue' },
+        { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon' }
+      ])
     end
   end
 end

@@ -6,6 +6,6 @@ table
     th Weekly Schedule
   - Dog.all.each do |dog|
     tr
-      td = dog.name
+      td = link_to(dog.name, edit_dog_path(dog))
       td = dog.weekly_schedule.map{ _1[0..2] }.join(",")
 
