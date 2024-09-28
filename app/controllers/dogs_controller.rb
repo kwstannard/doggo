@@ -13,7 +13,7 @@ class DogsController < ApplicationController
 
   def update
     dog = Dog.find(params[:id])
-    if dog.update(dog_params)
+    if dog.update(attr_params)
       redirect_to dogs_path
     else
       flash[:error] = dog.errors.full_messages
@@ -23,7 +23,7 @@ class DogsController < ApplicationController
   end
 
   def create
-    dog = Dog.new(dog_params)
+    dog = Dog.new(attr_params)
     if dog.save
       redirect_to dogs_path
     else
@@ -33,7 +33,7 @@ class DogsController < ApplicationController
     end
   end
 
-  def dog_params
+  def attr_params
     params.fetch(:dog, {}).permit(
       :name,
       :Monday,
