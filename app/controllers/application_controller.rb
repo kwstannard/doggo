@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
     when "Walker"
       redirect_to trips_path
     else
-      raise "no role"
+      flash[:error] = "Missing Role"
+      redirect_to new_session_path
     end
   end
 end

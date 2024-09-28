@@ -1,24 +1,6 @@
-# README
+# Read the git log please
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I didn't bother with making the frontend since I am not going to
+win this based off my front end skills.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Please note 100% test coverage without any tricks or shenanigans.

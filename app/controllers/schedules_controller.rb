@@ -12,6 +12,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to edit_schedule_path(@schedule)
     else
+      flash[:errors] = @schedule.errors.full_messages
       render :new
     end
   end
@@ -31,7 +32,8 @@ class SchedulesController < ApplicationController
     if @schedule.update(attr_params)
       redirect_to schedules_path
     else
-      render :edit
+      flash[:errors] = @schedule.errors.full_messages
+      render :new
     end
   end
 

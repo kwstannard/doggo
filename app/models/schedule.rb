@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   has_many :trips, foreign_key: :date
+  validates :date, presence: true
 
   before_save do
     write_attribute(:raw_assignments, assignments.to_json)

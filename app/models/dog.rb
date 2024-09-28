@@ -1,6 +1,8 @@
 class Dog < ApplicationRecord
   has_many :pickups
 
+  validates :name, presence: true
+
   def trip_for_today
     Trip.where(date: Date.current).detect { |trip|
       trip.dogs.include?(self)

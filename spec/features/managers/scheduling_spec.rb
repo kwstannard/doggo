@@ -79,4 +79,20 @@ RSpec.feature 'as a manager' do
       ])
     end
   end
+
+  example 'I get useful error messages' do
+    role_play("Manager") do
+      click_on "Scheduling"
+      click_on "New Daily Schedule"
+      click_on 'Schedule Dogs'
+      expect(page).to have_content("Date can't be blank")
+
+      fill_in 'Date', with: '2400-01-03'
+      click_on 'Schedule Dogs'
+      fill_in 'Date', with: ''
+      click_on 'Save'
+
+      expect(page).to have_content("Date can't be blank")
+    end
+  end
 end

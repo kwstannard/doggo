@@ -5,11 +5,8 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(attr_params)
-    if @trip.save
-      redirect_to edit_trip_path(@trip)
-    else
-      redirect_to new_trip_path
-    end
+    @trip.save!
+    redirect_to edit_trip_path(@trip)
   end
 
   def edit

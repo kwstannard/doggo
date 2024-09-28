@@ -23,11 +23,11 @@ class DogsController < ApplicationController
   end
 
   def create
-    dog = Dog.new(attr_params)
-    if dog.save
+    @dog = Dog.new(attr_params)
+    if @dog.save
       redirect_to dogs_path
     else
-      flash[:error] = dog.errors.full_messages
+      flash[:error] = @dog.errors.full_messages
 
       render :new
     end

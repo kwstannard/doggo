@@ -58,3 +58,5 @@ gem "capybara", "~> 3.40"
 gem "slim", "~> 5.2"
 
 gem "timecop", "~> 0.9.10"
+
+gem "simplecov", "~> 0.22.0"
