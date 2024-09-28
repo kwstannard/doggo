@@ -56,3 +56,5 @@ gem "rubocop-rspec", "~> 3.0"
 gem "capybara", "~> 3.40"
 
 gem "slim", "~> 5.2"
+
+gem "timecop", "~> 0.9.10"

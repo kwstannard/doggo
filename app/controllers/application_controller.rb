@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
     case session[:role_name]
     when "Manager"
       redirect_to dogs_path
+    when "Walker"
+      redirect_to trips_path
     else
       raise "no role"
     end

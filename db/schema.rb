@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_28_161326) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_28_203800) do
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.boolean "Monday"
@@ -22,9 +22,32 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_28_161326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dropoffs", force: :cascade do |t|
+    t.integer "dog_id"
+    t.integer "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pickups", force: :cascade do |t|
+    t.integer "dog_id"
+    t.integer "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.date "date"
     t.text "raw_assignments", default: "{}"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "truck_id"
+    t.date "date"
+    t.boolean "arrived"
+    t.boolean "departed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

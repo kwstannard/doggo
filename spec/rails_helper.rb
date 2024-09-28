@@ -69,7 +69,7 @@ RSpec.configure do |config|
   feature_module = Module.new do
     def role_play(role_name)
       Capybara.using_session(role_name) do
-        if !page.driver.browser.current_session.cookie_jar[:doggo_cookie]
+        if !page.driver.browser.current_session.cookie_jar[:_doggo_session]
           visit!("/sessions/new")
           fill_in "Role", with: role_name
           click_on 'Login'

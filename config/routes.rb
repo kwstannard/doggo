@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :dropoffs
+  resources :pickups
+  resources :trips
   resources :schedules
   resources :dogs
   resources :sessions

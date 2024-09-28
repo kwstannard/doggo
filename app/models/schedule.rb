@@ -1,4 +1,6 @@
 class Schedule < ApplicationRecord
+  has_many :trips, foreign_key: :date
+
   before_save do
     write_attribute(:raw_assignments, assignments.to_json)
   end
@@ -21,5 +23,9 @@ class Schedule < ApplicationRecord
 
   def trucks
     assignments.values.uniq
+  end
+
+  def truck_assignments
+    assignments.reduce(Hash.new { |h, k| h[k] = [] }) { |agg, (dog_id, truck_id)| agg.tap { |a|  a[truck_id] << dog_id } }
   end
 end

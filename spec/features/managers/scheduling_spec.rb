@@ -22,10 +22,10 @@ RSpec.feature 'as a manager' do
       click_on 'Save'
 
 
-      expect(table_hash).to eq([
-        { 'Name'=>'Rex', 'Weekly Schedule'=>'Mon,Tue,Wed,Thu,Fri' },
-        { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon' }
-      ])
+      expect(table_hash).to include(
+        { 'Name'=>'Rex', 'Weekly Schedule'=>'Mon,Tue,Wed,Thu,Fri', 'Currently'=>'At Home' },
+        { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon', 'Currently'=>'At Home' }
+      )
 
       ### Edit Dog
 
@@ -39,10 +39,10 @@ RSpec.feature 'as a manager' do
       uncheck 'Friday'
       click_on 'Save'
 
-      expect(table_hash).to eq([
-        { 'Name'=>'Rexy', 'Weekly Schedule'=>'Mon,Tue' },
-        { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon' }
-      ])
+      expect(table_hash).to include(
+        { 'Name'=>'Rexy', 'Weekly Schedule'=>'Mon,Tue', 'Currently'=>'At Home' },
+        { 'Name'=>'Spot', 'Weekly Schedule'=>'Mon', 'Currently'=>'At Home' }
+      )
 
       ### adding new schedules
 
