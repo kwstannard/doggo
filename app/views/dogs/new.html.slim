@@ -1,0 +1,9 @@
+= form_with model: @dog do |form|
+  = form.label :name
+  = form.text_field :name
+  
+  - Date::DAYNAMES[1..-2].each do |weekday|
+    = form.label weekday
+    = form.check_box weekday
+
+  = form.submit 'Save'

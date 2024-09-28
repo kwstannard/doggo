@@ -65,6 +65,35 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  feature_module = Module.new do
+    def role_play(role_name)
+      Capybara.using_session(role_name) do
+        if !page.driver.browser.current_session.cookie_jar[:doggo_cookie]
+          visit!("/sessions/new")
+          fill_in "Role", with: role_name
+          click_on 'Login'
+        end
+        yield
+      end
+    end
+
+    def visit!(path)
+      visit(path)
+      expect(current_path).to eq(path)
+      expect(status_code).to eq(200)
+    end
+
+    def table_hash(css = "table")
+      rows = find(css).find_all("tr")
+
+      keys = rows[0].find_all("th").map(&:text)
+      records = rows[1..-1].map { _1.find_all("td").map(&:text) }
+
+      records.map { |row| keys.zip(row).to_h }
+    end
+  end
+  config.include(feature_module, type: :feature)
 end
 
 require 'capybara/rspec'
