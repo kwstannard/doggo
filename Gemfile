@@ -50,3 +50,7 @@ group :development do
   gem "web-console"
 end
 
+
+gem "rspec-rails", "~> 7.0"
+gem "rubocop-rspec", "~> 3.0"
+gem "capybara", "~> 3.40"
