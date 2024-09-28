@@ -1,0 +1,13 @@
+= form_with model: @schedule do |form|
+  = form.label :date
+  = form.date_field :date
+  
+  = form.fields_for :assignments do |assignments_form|
+    - @dogs.each do |dog|
+      .dog
+        div
+          = dog.name
+        = assignments_form.label dog.id, 'Truck Assignment'
+        = assignments_form.text_field dog.id, value: @schedule.assignments[dog.id.to_s]
+
+  = form.submit 'Save'

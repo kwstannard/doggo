@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_28_144958) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_28_161326) do
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.boolean "Monday"
@@ -18,6 +18,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_28_144958) do
     t.boolean "Wednesday"
     t.boolean "Thursday"
     t.boolean "Friday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.date "date"
+    t.text "raw_assignments", default: "{}"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

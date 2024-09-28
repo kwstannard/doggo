@@ -1,0 +1,14 @@
+= link_to 'New Daily Schedule', new_schedule_path
+
+table
+  tr
+    th Date
+    th Day Name
+    th Dog Count
+    th Truck Count
+  - @schedules.each do |day|
+    tr
+      td = link_to day.date, edit_schedule_path(day)
+      td = link_to day.name, edit_schedule_path(day)
+      td = day.dogs.count
+      td = day.trucks.count
