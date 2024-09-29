@@ -1,2 +1,5 @@
-= link_to 'Scheduling', schedules_path
-= link_to 'Dogs', dogs_path
+- if @role == "Manager"
+  = link_to 'Scheduling', schedules_path
+  = link_to 'Dogs', dogs_path
+- elsif @role == "Walker"
+  = link_to 'Trips', trips_path

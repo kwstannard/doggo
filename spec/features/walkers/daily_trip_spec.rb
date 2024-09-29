@@ -101,5 +101,24 @@ RSpec.feature 'as a walker' do
         { "Name"=>"Spot", "Weekly Schedule"=>"Mon", "Currently"=>"Dropped Off" }
       )
     end
+
+    role_play("Manager") do
+      click_on 'Scheduling'
+      click_on 'New Daily Schedule'
+      fill_in 'Date', with: '2400-01-10'
+      click_on 'Schedule Dogs'
+      find('.dog', text: 'Rex').fill_in('Truck Assignment', with: '1')
+      find('.dog', text: 'Spot').fill_in('Truck Assignment', with: '1')
+      click_on 'Save'
+    end
+
+    Timecop.freeze('2400-01-10')
+
+    role_play("Walker") do
+      click_on 'Trips'
+      click_on 'Start Today'
+      click_on 'Go'
+      expect(Trip.count).to eq(2)
+    end
   end
 end
