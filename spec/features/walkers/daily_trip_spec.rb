@@ -32,6 +32,7 @@ RSpec.feature 'as a walker' do
       click_on 'Go'
 
       find('.dogs').click_on 'Rex Picked Up'
+      expect(page).to_not have_button('Rex')
     end
 
     role_play("Manager") do
@@ -44,6 +45,7 @@ RSpec.feature 'as a walker' do
 
     role_play("Walker") do
       find('.dogs').click_on 'Spot Picked Up'
+      expect(page).to_not have_button('Spot')
     end
 
     role_play("Manager") do
@@ -80,6 +82,7 @@ RSpec.feature 'as a walker' do
 
     role_play("Walker") do
       find('.dogs').click_on 'Rex Dropped Off'
+      expect(page).to_not have_button('Rex Dropped Off')
     end
 
     role_play "Manager" do
@@ -92,6 +95,7 @@ RSpec.feature 'as a walker' do
 
     role_play("Walker") do
       find('.dogs').click_on 'Spot Dropped Off'
+      expect(page).to_not have_button('Spot')
     end
 
     role_play "Manager" do

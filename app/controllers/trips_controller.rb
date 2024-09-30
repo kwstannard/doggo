@@ -11,12 +11,6 @@ class TripsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:id])
-    if @trip.arrived && @trip.departed
-    elsif @trip.arrived
-      @trip.departed = true
-    else
-      @trip.arrived = true
-    end
   end
 
   def update
@@ -28,6 +22,13 @@ class TripsController < ApplicationController
   private
 
     def attr_params
-      params.fetch(:trip, {}).permit(:date, :truck_id, :arrived, :departed)
+      params.fetch(:trip, {}).permit(:date, :truck_id, :arrived, :departed).tap {|p|
+        case params[:commit]
+        when 'Arrived'
+          p[:arrived] = true
+        when 'Departed'
+          p[:departed] = true
+        end
+      }
     end
 end

@@ -1,19 +1,26 @@
+h2 = @trip.schedule.name
+hr
 .dogs
-  div Dogs
   - @trip.dogs.each do |dog|
-    = form_with model: @trip.pickups.new do |form|
-      = form.hidden_field :dog_id, value: dog.id
-      = form.hidden_field :trip_id, value: @trip.id
-      = form.submit("#{dog.name} Picked Up")
-    = form_with model: @trip.dropoffs.new do |form|
-      = form.hidden_field :dog_id, value: dog.id
-      = form.hidden_field :trip_id, value: @trip.id
-      = form.submit("#{dog.name} Dropped Off")
+    - case dog.status
+    - when 'At Home'
+      = form_with model: @trip.pickups.new do |form|
+        = form.hidden_field :dog_id, value: dog.id
+        = form.hidden_field :trip_id, value: @trip.id
+        = form.submit("#{dog.name} Picked Up")
+    - when "Departed"
+      = form_with model: @trip.dropoffs.new do |form|
+        = form.hidden_field :dog_id, value: dog.id
+        = form.hidden_field :trip_id, value: @trip.id
+        = form.submit("#{dog.name} Dropped Off")
+hr
 
 = form_with model: @trip do |form|
   = form.hidden_field :arrived
   = form.hidden_field :departed
-  - if @trip.arrived && @trip.departed
+
+  - if @trip.departed
+  - elsif @trip.arrived
     = form.submit 'Departed'
   - else
     = form.submit 'Arrived'
