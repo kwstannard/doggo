@@ -1,5 +1,11 @@
-h1 = "Today is #{@trip.date}"
 = form_with model: @trip do |form|
-  = form.hidden_field :date
-  = form.select :truck_id, @trip.schedule.trucks.map { ["Truck #{_1}", _1] }
-  = form.submit 'Go'
+  div.grid
+    div
+    div
+      p = "Today is #{@trip.date}."
+      p = "Please choose a truck."
+      = form.hidden_field :date
+      = form.select :truck_id, @trip.schedule.trucks.map { ["Truck #{_1}", _1] }
+      br
+      = form.submit 'Go'
+    div
