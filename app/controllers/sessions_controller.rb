@@ -6,4 +6,9 @@ class SessionsController < ApplicationController
     session[:role_name]=params[:role]
     dashboard
   end
+
+  def destroy
+    session.clear
+    redirect_to new_sessions_path
+  end
 end

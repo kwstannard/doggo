@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       redirect_to trips_path
     else
       flash[:error] = "Missing Role"
-      redirect_to new_session_path
+      redirect_to new_sessions_path
     end
   end
 end
