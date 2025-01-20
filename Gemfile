@@ -52,7 +52,7 @@ end
 
 
 gem "rspec-rails", "~> 7.0"
-gem "rubocop-rspec", "~> 3.0"
+gem "rubocop-rspec", "~> 3.4"
 gem "capybara", "~> 3.40"
 
 gem "slim", "~> 5.2"
