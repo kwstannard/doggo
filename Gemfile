@@ -51,7 +51,7 @@ group :development do
 end
 
 
-gem "rspec-rails", "~> 7.0"
+gem "rspec-rails", "~> 7.1"
 gem "rubocop-rspec", "~> 3.0"
 gem "capybara", "~> 3.40"
 
